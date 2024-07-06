@@ -13,6 +13,10 @@ def index(request):
     return render(request, 'index.html')
 
 def login_view(request):
+    if request.user.is_authenticated: #si el usuario ya está autenticado lo redirigimos al index
+        return redirect('index')
+    
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -33,6 +37,10 @@ def logout_view(request):
     return redirect('login')
 
 def register(request):
+    
+    if request.user.is_authenticated: #si el usuario ya está autenticado lo redirigimos al index
+        return redirect('index')
+    
     form = RegisterForm(request.POST or None) #si la peticion es por metodo post entonces genera un formulario con los datos ingresados, sino sera un formulario con los campos vacios
     
     #obtener informacion a partir de un formulario basado en clases

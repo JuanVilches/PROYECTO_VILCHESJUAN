@@ -1,30 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  </head>
-  <body>
-    <div class="container">
-        {% if messages %}<!--condicionamos si existe el mensaje-->
-            {% for message in messages %}
-                <div class="alert {% if message.tags == 'success'%}alert-success{%else%}alert-danger{%endif%}"><!--para saber si el mensaje fue de exito o error nos apoyamos en el atributo tags. si  es succes la clase quedará alert-success, sino alert-danger-->
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button><!--Cuando el usuario hace clic en el botón, Bootstrap automáticamente oculta o elimina el componente de alerta correspondiente.-->
-                {{ message }}<!--se muestra el mensaje-->
-                </div>
-            {% endfor %}
-        {% endif %}
-        <div class="row">
-            <div class="col">
+{% extends 'base.html' %}
 
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% block content %}
+  <div class="col">
+    <h1>{{ mesage }}</h1>
+    <h1>index</h1>
+  </div>
+{% endblock %}

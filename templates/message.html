@@ -1,0 +1,11 @@
+{% if messages %}<!--condicionamos si existe el mensaje-->
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'success'%}alert-success{%else%}alert-danger{%endif%}"><!--para saber si el mensaje fue de exito o error nos apoyamos en el atributo tags. si  es succes la clase quedará alert-success, sino alert-danger-->
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button><!--Cuando el usuario hace clic en el botón, Bootstrap automáticamente oculta o elimina el componente de alerta correspondiente.-->
+            {{ message }}<!--se muestra el mensaje-->
+            </div>
+        {% endfor %}
+        {% endif %}
+        <div class="row">
+            {% block content  %}<!--acá se insertará el contenido de los templates que hereden de base-->
+            {% endblock  %}
