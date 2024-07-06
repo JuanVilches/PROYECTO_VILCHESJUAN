@@ -58,7 +58,7 @@ ROOT_URLCONF = 'ENCProduction.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],#le indicamos a django que todos los templates los busque en u folder llamado templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
