@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'planta',
     'producto',
     'produccion',
@@ -54,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ENCProduction.urls'
+
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {

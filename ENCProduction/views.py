@@ -7,7 +7,8 @@ from django.contrib import messages#para enviar mensajes desde el servidor al cl
 
 from .forms import RegisterForm
 
-from django.contrib.auth.models import User #importamos el modelo de user de django
+#from django.contrib.auth.models import User #importamos el modelo de user de django
+from users.models import User
 
 def index(request):
     return render(request, 'index.html')
