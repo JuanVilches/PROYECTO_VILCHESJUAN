@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Producción</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Litros</th>
+            <th>Fecha</th>
+            <th>Turno</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro.producto }}</td>
+            <td>{{ registro.litros }}</td>
+            <td>{{ registro.fecha }}</td>
+            <td>{{ registro.get_turno_display }}</td>
+            <td>
+                <a href="{% url 'produccion:editar_produccion' registro.pk %}" class="btn btn-secondary">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

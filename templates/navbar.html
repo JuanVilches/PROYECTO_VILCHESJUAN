@@ -1,6 +1,7 @@
 {% url 'login' as login %}
-<!-- al hacer esto la variable login tiene almacenado 'usuarios/login' -->
 {% url 'register' as register %}
+{% url 'produccion:lista_produccion' as lista_produccion %}
+{% url 'produccion:registrar_produccion' as registrar_produccion %}
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <a href="#" class="navbar-brand">ENCProduction</a>
@@ -10,20 +11,32 @@
   <div id="navb" class="collapse navbar-collapse">
     <ul class="navbar-nav ms-auto">
       {% if user.is_authenticated %}
+        <li class="nav-item {% if request.path == lista_produccion %}active{% endif %}">
+          <a href="{{ lista_produccion }}" class="nav-link">
+            <span class="fas fa-list"></span>
+            Lista de Producción
+          </a>
+        </li>
+        <li class="nav-item {% if request.path == registrar_produccion %}active{% endif %}">
+          <a href="{{ registrar_produccion }}" class="nav-link">
+            <span class="fas fa-plus"></span>
+            Registrar Producción
+          </a>
+        </li>
         <li class="nav-item">
           <a href="{% url 'logout' %}" class="nav-link">
-            <span class="fas fa-sign-in-alt"></span>
+            <span class="fas fa-sign-out-alt"></span>
             Logout
           </a>
         </li>
       {% else %}
         <li class="nav-item {% if request.path == login %}active{% endif %}">
           <a href="{{ login }}" class="nav-link">
-            <span class="fas fa-user"></span>
+            <span class="fas fa-sign-in-alt"></span>
             Login
           </a>
         </li>
-        <li class="nav-item {% if request.path == register %}active {% endif %}">
+        <li class="nav-item {% if request.path == register %}active{% endif %}">
           <a href="{{ register }}" class="nav-link">
             <span class="fas fa-user-plus"></span>
             Registro

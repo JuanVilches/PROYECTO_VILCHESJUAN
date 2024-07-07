@@ -32,8 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users',
-    'planta',
-    'producto',
     'produccion',
     'rest_framework',
     'django.contrib.admin',
