@@ -1,4 +1,4 @@
-from rest_framework.response import Response 
+from rest_framework.response import Response
 from django.db.models import Sum
 from rest_framework import generics
 from .models import RegistroProduccion
@@ -6,12 +6,15 @@ from .serializers import ProduccionPorPlantaSerializer, RegistroProduccionSerial
 from .filters import RegistroProduccionFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django.utils.safestring import mark_safe
+from .utils import send_slack_message
+from rest_framework.permissions import IsAuthenticated
 
 class RegistroProduccionListCreate(generics.ListCreateAPIView):
     queryset = RegistroProduccion.objects.all()
     serializer_class = RegistroProduccionSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = RegistroProduccionFilter
+    permission_classes = [IsAuthenticated]
 
     def get_view_name(self):
         return "Lista y Creación de Producción"
@@ -24,6 +27,10 @@ class RegistroProduccionListCreate(generics.ListCreateAPIView):
             "Producción por Planta</a>."
         )
         return mark_safe(description)
+
+    def perform_create(self, serializer):
+        instance = serializer.save(operador=self.request.user)
+        send_slack_message(instance)
 
 class RegistroProduccionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = RegistroProduccion.objects.all()
