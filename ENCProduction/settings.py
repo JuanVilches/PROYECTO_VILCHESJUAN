@@ -140,3 +140,4 @@ load_dotenv()  # Carga las variables del archivo .env
 
 SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
 SLACK_CHANNEL = os.getenv('SLACK_CHANNEL')
+SLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')
